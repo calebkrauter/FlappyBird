@@ -4,9 +4,11 @@ public class PipeMoveScript : MonoBehaviour
 {
     public float moveSpeed = 5;
     public float deadZone = -60;
+    private LogicScript logic;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
 
     }
 
@@ -16,8 +18,11 @@ public class PipeMoveScript : MonoBehaviour
         transform.position = Vector3.left * moveSpeed * Time.deltaTime + transform.position;
         if (transform.position.x < deadZone)
         {
-            Debug.Log("Pipe Deleted.");
             Destroy(gameObject);
+        }
+        if (logic.gameOverScreen.activeSelf)
+        {
+            moveSpeed = 0;
         }
 
     }

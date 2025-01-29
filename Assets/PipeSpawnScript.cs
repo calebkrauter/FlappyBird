@@ -6,10 +6,13 @@ public class PipeSpawnScript : MonoBehaviour
     public float spawnRate = 3;
     private float timer = 0;
     public float heightOffset = 10;
+    private LogicScript logic;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
+
         SpawnPipe();
     }
 
@@ -20,7 +23,7 @@ public class PipeSpawnScript : MonoBehaviour
         {
             timer += Time.deltaTime;
         }
-        else
+        else if (!logic.gameOverScreen.activeSelf)
         {
             SpawnPipe();
             timer = 0;
