@@ -27,7 +27,10 @@ public class BirdScript : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        logic.GameOver();
-        birdIsAlive = false;
+        if (collision.gameObject.name == "Main Camera")
+        {
+            logic.GameOver();
+            birdIsAlive = false;
+        }
     }
 }
