@@ -1,0 +1,4 @@
+repository "FlappyBird@GhostTools@cloud"
+  path "/"
+    br "/main"
+    co "/main"
